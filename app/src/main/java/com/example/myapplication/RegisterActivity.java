@@ -20,24 +20,46 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        EditText etUserName = findViewById(R.id.et_username);
+        EditText etUsername = findViewById(R.id.et_register_username);
         EditText etEmail = findViewById(R.id.et_register_email);
-        EditText etPassword = findViewById(R.id.et_password);
+        EditText etPassword = findViewById(R.id.et_register_password);
         EditText etConfirmPassword = findViewById(R.id.et_register_confirm_password);
-        EditText etPhone = findViewById(R.id.et_register_mobile);
+        EditText etMobile = findViewById(R.id.et_register_mobile);
+        Button btnRegister = findViewById(R.id.btn_register);
+        Button btnLogin = findViewById(R.id.btn_login);
 
-        Button btn_Register = findViewById(R.id.btn_register);
-        Button btn_Login = findViewById(R.id.btn_login);
 
-        btn_Register.setOnClickListener(v -> {
-                Toast.makeText(RegisterActivity.this, "Register Button clickd !!", Toast.LENGTH_SHORT).show();
+        btnRegister.setOnClickListener(v->{
+            String username = etUsername.getText().toString();
+            String email = etEmail.getText().toString();
+            String password = etPassword.getText().toString();
+            String confirmPassword = etConfirmPassword.getText().toString();
+            String mobile = etMobile.getText().toString();
+
+            if (password.equals(confirmPassword) && !password.isEmpty() && !username.isEmpty()){
+                Toast.makeText(RegisterActivity.this, "well done! Let me insert your info in DB!", Toast.LENGTH_SHORT).show();
+                //connection with DB
+                DatabaseHelper dbHelper = new DatabaseHelper(RegisterActivity.this);
+                boolean isInserted = dbHelper.insertUser(username, email, password, mobile);
+
+                if (isInserted) {
+                    Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(RegisterActivity.this, "Passwords do not match or empty password or empty username!", Toast.LENGTH_SHORT).show();
+
+            }
+
         });
-
-        btn_Login.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RegisterActivity.this, "Login Button clicked !!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                //Toast.makeText(RegisterActivity.this, "Login button clicked!!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
