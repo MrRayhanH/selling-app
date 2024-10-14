@@ -52,5 +52,10 @@ public class ProductsDisplay extends AppCompatActivity {
         listViewProducts.setAdapter(adapter);
     }
 
+    private void handlecard()
+    {
+        Intent intent = new Intent(ProductsDisplay.this, CardActivity.class); // Assuming HomeActivity is the activity after login
+        startActivity(intent);
+    }
 
 }

@@ -20,7 +20,7 @@ public class ProductAdapter extends CursorAdapter {
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        return inflater.inflate(R.layout.list_item_product, parent, false);
+        return inflater.inflate(R.layout.listitemproduct, parent, false);
     }
 
     @Override
@@ -41,8 +41,6 @@ public class ProductAdapter extends CursorAdapter {
         quantityTextView.setText(String.valueOf(quantity));
         Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
         productImageView.setImageBitmap(bitmap);
-
-
 
 
     }
