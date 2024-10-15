@@ -119,6 +119,10 @@ public class UpdateProductActivity extends AppCompatActivity {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
+        else
+        {
+            Toast.makeText(this, "Update Successful ", Toast.LENGTH_SHORT).show();
+        }
 
         double price = Double.parseDouble(productPrice);
         int quantity = Integer.parseInt(productQuantity);

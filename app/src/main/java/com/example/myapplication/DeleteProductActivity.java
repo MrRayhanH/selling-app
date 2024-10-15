@@ -77,8 +77,10 @@ public class DeleteProductActivity extends AppCompatActivity {
                 imageViewProduct.setImageBitmap(bitmap);
                 productImageByteArray = image;
             }
+            Toast.makeText(this, "Product delete", Toast.LENGTH_SHORT).show();
             cursor.close();
-        } else {
+        }
+        else {
             Toast.makeText(this, "Product not found", Toast.LENGTH_SHORT).show();
         }
     }

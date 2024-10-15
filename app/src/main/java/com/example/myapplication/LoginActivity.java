@@ -38,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
             }else{
 
                 if(username.equals("admin") && password.equals("admin")){
-                    //Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class); // Assuming HomeActivity is the activity after login
-                    //startActivity(intent);
+                    Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class); // Assuming HomeActivity is the activity after login
+                    startActivity(intent);
                 }
                 else {
                     DatabaseHelper dbHelper = new DatabaseHelper(LoginActivity.this);

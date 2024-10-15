@@ -88,8 +88,10 @@ public class InsertProductActivity extends AppCompatActivity {
             Toast.makeText(this, "Please fill all fields and select an image", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        else{
+            Toast.makeText(this, "Product inserted successfully", Toast.LENGTH_SHORT).show();
+        }
         databaseHelper.insertProduct(name, price, quantity, imageByteArray);
-        Toast.makeText(this, "Product inserted successfully", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Product inserted successfully", Toast.LENGTH_SHORT).show();
     }
 }
